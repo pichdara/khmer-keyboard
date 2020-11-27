@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="bottom_row" type="id" />
+    <item name="textView" type="id" />
+    <item name="char_sets" type="id" />
+    <item name="first_row" type="id" />
+    <item name="key123" type="id" />
+    <item name="keyKorKhor" type="id" />
+    <item name="keyFullStop" type="id" />
+    <item name="keyQuestionMark" type="id" />
+    <item name="keySpace" type="id" />
+    <item name="backspace" type="id" />
+    <item name="returnKey" type="id" />
+    <item name="emoji" type="id" />
+    <item name="language" type="id" />
+</resources>
