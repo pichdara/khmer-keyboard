@@ -20,7 +20,7 @@ public class Theme extends Activity implements View.OnClickListener {
         back = findViewById(R.id.back_key);
         white = findViewById(R.id.white_board);
         defaultBoard = findViewById(R.id.dark_board);
-        blue = findViewById(R.id.blur_keyboard);
+//        blue = findViewById(R.id.blur_keyboard);
         purple = findViewById(R.id.purple);
         orange = findViewById(R.id.orange);
         red = findViewById(R.id.red_board);

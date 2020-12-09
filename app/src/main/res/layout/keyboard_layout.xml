@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:visibility="visible"
             android:background="#313131"
             android:paddingBottom="5dp">
             //logo
@@ -45,7 +46,6 @@
                 android:id="@+id/suggestions"
                 android:layout_width="0dp"
                 android:layout_weight="6"
-                android:visibility="visible"
                 android:layout_height="match_parent"
                 android:gravity="right"
                 >
@@ -116,20 +116,24 @@
 
             //emoji icon holder
             <LinearLayout
-                android:visibility="gone"
+                android:id="@+id/emojiHolder"
                 android:layout_width="0dp"
                 android:layout_weight="6"
+                android:visibility="gone"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-
+                        android:padding="3dp"
+                        android:id="@+id/emo_smiley"
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar1"
+
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
@@ -140,17 +144,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-
+                        android:id="@+id/emo_people"
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar2"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_people" />
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/emo_nature"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -158,15 +163,16 @@
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar3"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_nature"
                             />
 
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/emo_food"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -174,14 +180,15 @@
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar4"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_fast_food"
                             />
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/emo_transport"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -189,14 +196,15 @@
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar5"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_buildings"
                             />
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/emo_activities"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -204,13 +212,14 @@
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar6"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_yoga" />
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/emo_object"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
@@ -218,36 +227,39 @@
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar7"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_idea" />
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/emo_object1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar8"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_mathematical_symbols_in_four_squares"
                             />
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/emo_flag"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+
                         >
 
                         <ImageView
-                            android:id="@+id/emoji_bar9"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_maps_and_flags"
                             />
@@ -273,6 +285,7 @@
                 android:layout_weight="1"
                 android:background="#313131"
                 android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
                 android:orientation="horizontal">
                 <LinearLayout
                     android:layout_width="0dp"
@@ -348,7 +361,7 @@
                             android:textSize="15sp"/>
 
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -373,7 +386,7 @@
                             android:textSize="15sp"/>
 
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -398,7 +411,7 @@
                             android:textSize="15sp"/>
 
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -423,7 +436,7 @@
                             android:textSize="15sp"/>
 
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -448,7 +461,7 @@
                             android:textSize="15sp"/>
 
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -550,12 +563,12 @@
                             android:textColor="#fff"
                             android:textSize="8sp"/>
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:paddingRight="3dp">
+                    android:paddingRight="5dp">
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -576,7 +589,7 @@
                             android:textColor="#fff"
                             android:textSize="8sp"/>
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
             </LinearLayout>
             //second row
             <LinearLayout
@@ -585,6 +598,7 @@
                 android:layout_weight="1"
                 android:background="#313131"
                 android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
                 android:orientation="horizontal">
                 <LinearLayout
                     android:layout_width="0dp"
@@ -870,7 +884,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:paddingRight="3dp">
+                    android:paddingRight="5dp">
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -901,6 +915,7 @@
                 android:layout_weight="1"
                 android:background="#313131"
                 android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
                 android:orientation="horizontal">
                 <LinearLayout
                     android:layout_width="0dp"
@@ -1186,7 +1201,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:paddingRight="3dp">
+                    android:paddingRight="5dp">
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -1215,31 +1230,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:paddingLeft="5dp"
                 android:background="#313131"
                 android:paddingBottom="5dp"
                 android:orientation="horizontal">
-<!--                <LinearLayout-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:paddingLeft="3dp"-->
-<!--                    android:paddingRight="5dp"-->
-<!--                    >-->
-<!--                    <FrameLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:background="@drawable/rounded_shape"-->
-<!--                        >-->
-
-<!--                        <ImageView-->
-<!--                            android:id="@+id/d1"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:src="@drawable/ic_baseline_arrow_upward_24" />-->
-
-<!--                    </FrameLayout>-->
-<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -1500,7 +1494,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:paddingRight="3dp">
+                    android:paddingRight="5dp">
                     <FrameLayout
                         android:id="@+id/backspace"
                         android:layout_width="match_parent"
@@ -1519,6 +1513,7 @@
 
 
             </LinearLayout>
+            //recycler view
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/myRecylerView"
                 android:layout_width="match_parent"
@@ -1538,13 +1533,14 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="#313131"
+            android:paddingTop="2.5dp"
             android:paddingBottom="5dp"
             android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:paddingLeft="3dp"
+                android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:orientation="horizontal">
                 <FrameLayout
@@ -1562,6 +1558,8 @@
                         android:textColor="#fff"
                         android:layout_gravity="center"/>
                 </FrameLayout>
+
+
                 <FrameLayout
                     android:visibility="gone"
                     android:id="@+id/keyKorKhor"
@@ -1614,7 +1612,7 @@
                         android:layout_gravity="center"/>
 
                 </FrameLayout>
-            </LinearLayout>l
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/keySpace"
                 android:layout_width="0dp"
