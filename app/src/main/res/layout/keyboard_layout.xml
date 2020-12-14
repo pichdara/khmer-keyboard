@@ -548,20 +548,17 @@
                         android:background="@drawable/rounded_shape">
 
                         <TextView
-                            android:id="@+id/a11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:textColor="#fff"
-                            android:textSize="15sp"/>
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-
                             android:textColor="#fff"
-                            android:textSize="8sp"/>
+                            android:textSize="10sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="#fff"
+                            android:textSize="15sp"/>
                     </FrameLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -575,19 +572,17 @@
                         android:background="@drawable/rounded_shape">
 
                         <TextView
-                            android:id="@+id/a12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-                            android:textColor="#fff"
-                            android:textSize="15sp"/>
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
                             android:textColor="#fff"
-                            android:textSize="8sp"/>
+                            android:textSize="10sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="#fff"
+                            android:textSize="15sp"/>
                     </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
