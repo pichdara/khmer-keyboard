@@ -37,7 +37,6 @@ public class KhmerKeyboard extends InputMethodService {
     }
 
 
-
     String[] emo_smiley = {"😀","😃","😄","😁","😆","😅","😂","🤣","😭","😗",
             "😙","😚","😘","🥰","😍","🤩","🥳","🤗","🙃",
             "🙂","☺️","😊","😏","😌","😉","🤭","😶","😐","😑",
@@ -142,27 +141,17 @@ public class KhmerKeyboard extends InputMethodService {
 
     String[] charAll = {"1","១","2","២","3","៣","4","៤","5","៥","6","៦","7","៧","8","៨","9","៩","១","០","ឦ","ឥ","ឪ","ឲ",
             "ឈ","ឆ","ឺ","ឹ","ែ","េ","ឬ","រ","ទ","ត","ួ","យ","ូ","ុ","ី","ិ","ៅ","ោ","ភ","ផ","ឿ","ៀ","ឧ","ឪ",
-            "ាំ","ា","ៃ","ស","ឌ","ដ","ធ","ថ","អ","ង","ះ","ហ","ញ","​​​្","គ","ក","ឡ","ល","ោះ","ើ","​​៉","់","ឭ","ឮ",
+            "ាំ","ា","ៃ","ស","ឌ","ដ","ធ","ថ","អ","ង","ះ","ហ","ញ","​្","គ","ក","ឡ","ល","ោះ","ើ","​​៉","់","ឭ","ឮ",
             "ឍ","ឋ","ឃ","ខ","ជ","ច","េះ","វ","ព","ប","ណ","ន","ំ","ម","ុះ","ុំ","។","៕","?","​​៊"};
     String[] secondLayout ={"","1","","2","","3","","4","","5","","6","","7","","8","","9","","0","","(","",")","","#","","-","","+","","*","","^",
             "","/","","|","","\\","","~","","=","","[","","]","","%","","<","",">","","&","",":","",";","","{","","}","",".","",",","","?","","!","","'",
             "","/","","។","","៕","","-","","@","","៛","","$","","€","","£"};
 
-//    String[] secondLayout ={"១","1","២","2","៣","3","៤","4","៥","5","៦","6","៧","7","៨","8","៩","9","០","0","ឰ","ឫ","ឩ","ឱ",
-//            "|","\\","~","=","<","[",">","]","%","{","&","}",":","៚",";","៙",".","ឳ",",","?","ៈ","!","៖","'","/","។","៕","-","@",
-//            "៰","៱","ៜ","៲","៝","៳","៴","៵","៶","៷","៸","៹",
-//            " ៓","᠁","᠂","᠃","᠄","᠅","᠆","᠇","᠈","᠉","ឝ","ឞ","᧠","᧡","᧣","᧤","᧦","᧥","᧱","᧲",
-//            "᧳","᧴","᧵","᧶","@","៛","$"};
-//    String[] secondLayoutg ={"១","1","២","2","៣","3","៤","4","៥","5","៦","6","៧","7","៨","8","៩","9","០","0","ឰ","ឫ","ឩ","ឱ",
-//            "|","\\","~","=","<","[",">","]","%","{","&","}",":","៚",";","៙",".","ឳ",",","?","ៈ","!","៖","'","/","។","៕","-","@",
-//            "៰","៱","ៜ","៲","៝","៳","៴","៵","៶","៷","៸","៹",
-//            " ៓","᠁","᠂","᠃","᠄","᠅","᠆","᠇","᠈","᠉","ឝ","ឞ","᧠","᧡","᧣","᧤","᧦","᧥","᧱","᧲",
-//            "᧳","᧴","᧵","᧶","@","៛","$"};
-    //    ៎  ៓   ៘ ៹
-
 
     //display text into suggestion row
     private void setSuggestionText(StringBuffer inputString1, ArrayList<TextView> sugTextView){
+        Log.d("PIUKeyboard", "InputString length: "+ inputString1.length());
+
         if (inputString1.length() == 0){
             suggestionRow.setVisibility(View.INVISIBLE);
         }
@@ -198,10 +187,16 @@ public class KhmerKeyboard extends InputMethodService {
 
     //query top 3 suggestion word from database
     private List<String> query (StringBuffer word){
+
+        Log.d("PIUKeyboard", "query for:"+word);
         DatabaseAccess dbAccess = DatabaseAccess.getInstance(getApplicationContext());
         dbAccess.open();
         List<String> suggestion = dbAccess.getSuggestion(word, isAutoComplete);
         dbAccess.close();
+        for (int i = 0; i<suggestion.size(); i++) {
+            Log.d("PIUKeyboard", "queryed data:" + suggestion.get(i));
+        }
+
         return suggestion;
     }
 
@@ -239,14 +234,10 @@ public class KhmerKeyboard extends InputMethodService {
     @Override
     public View onCreateInputView() {
 
-
-
-
-
-
         inputString = new StringBuffer();
 
         Log.d("PIUKeyboard", "Keyboard started");
+        Log.d("PIUKeyboard", "InputString length: "+ inputString.length());
 
         ic = getCurrentInputConnection();
         ViewGroup keyboardView = (ViewGroup)getLayoutInflater().inflate(R.layout.keyboard_layout, null);
@@ -272,6 +263,7 @@ public class KhmerKeyboard extends InputMethodService {
         final ViewGroup emo_holder = keyboardView.findViewById(R.id.emojiHolder);
 
 
+        suggestionRow.setVisibility(View.INVISIBLE);
 
         recyclerView = keyboardView.findViewById(R.id.myRecylerView);
         recyclerView.setHasFixedSize(true);
@@ -385,7 +377,6 @@ public class KhmerKeyboard extends InputMethodService {
                         curPos = inputString.length()-1;
                     }
                     inputString.deleteCharAt(curPos);
-//                    Log.d("PIUKeyboard", "inputString Value: " + inputString);
 
                 }
                 setSuggestionText(inputString, sugTextView);
@@ -434,11 +425,13 @@ public class KhmerKeyboard extends InputMethodService {
 
                     //auto complete
                     if (isAutoComplete){
+                        curPos = ic.getTextBeforeCursor(300,0).length();
                         ic.deleteSurroundingText(inputString.length(),0);
                         inputString = new StringBuffer(sugTextView.get(b).getText());
                         ic.commitText(inputString, 1);
                         Log.d("PIUKeyboard", "inputString value:" +inputString.length()+" ");
                         updatePriority((String) sugTextView.get(b).getText());
+                        inputString = new StringBuffer();
                         isAutoComplete = false;
                     }
                     //next word
@@ -452,7 +445,16 @@ public class KhmerKeyboard extends InputMethodService {
                 }
             });
             l++;
+
         }
+
+
+
+
+
+
+
+
         keyEmoji.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
