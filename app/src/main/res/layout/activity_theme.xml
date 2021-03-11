@@ -103,7 +103,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/custom"
+        android:id="@+id/blue_board"
         android:layout_width="180dp"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
@@ -119,9 +119,12 @@
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/purple_board"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/custom"
-        app:layout_constraintTop_toBottomOf="@+id/custom_theme" />
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_theme"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/red_board"

@@ -9,4 +9,8 @@
 
     <color name="keybackground">#FFFFFF</color>
     <color name="suggestion_bar">#FE91CA</color>
+
+    <color name="default_font_color">#FFFFFF</color>
+    <color name="white_theme_font_color">#000000</color>
+
 </resources>

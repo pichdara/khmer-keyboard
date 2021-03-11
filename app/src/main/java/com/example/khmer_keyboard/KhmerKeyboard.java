@@ -1,6 +1,12 @@
-package com.example.khmer_keyboard;
+ package com.example.khmer_keyboard;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources.Theme;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
+import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -8,9 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +39,8 @@ public class KhmerKeyboard extends InputMethodService {
     private RecyclerView recyclerView;
     MyAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    SharedPreferences theme;
+    String theme_name = "blue";
 
 
 
@@ -141,8 +152,8 @@ public class KhmerKeyboard extends InputMethodService {
 
     String[] charAll = {"1","១","2","២","3","៣","4","៤","5","៥","6","៦","7","៧","8","៨","9","៩","១","០","ឦ","ឥ","ឪ","ឲ",
             "ឈ","ឆ","ឺ","ឹ","ែ","េ","ឬ","រ","ទ","ត","ួ","យ","ូ","ុ","ី","ិ","ៅ","ោ","ភ","ផ","ឿ","ៀ","ឧ","ឪ",
-            "ាំ","ា","ៃ","ស","ឌ","ដ","ធ","ថ","អ","ង","ះ","ហ","ញ","​្","គ","ក","ឡ","ល","ោះ","ើ","​​៉","់","ឭ","ឮ",
-            "ឍ","ឋ","ឃ","ខ","ជ","ច","េះ","វ","ព","ប","ណ","ន","ំ","ម","ុះ","ុំ","។","៕","?","​​៊"};
+            "ាំ","ា","ៃ","ស","ឌ","ដ","ធ","ថ","អ","ង","ះ","ហ","ញ"," ្","គ","ក","ឡ","ល","ោះ","ើ","​​៉","់","ឭ","ឮ",
+            "ឍ","ឋ","ឃ","ខ","ជ","ច","េះ","វ","ព","ប","ណ","ន","ំ","ម","ុះ","ុំ","។","៕","?","៊"};
     String[] secondLayout ={"","1","","2","","3","","4","","5","","6","","7","","8","","9","","0","","(","",")","","#","","-","","+","","*","","^",
             "","/","","|","","\\","","~","","=","","[","","]","","%","","<","",">","","&","",":","",";","","{","","}","",".","",",","","?","","!","","'",
             "","/","","។","","៕","","-","","@","","៛","","$","","€","","£"};
@@ -231,10 +242,191 @@ public class KhmerKeyboard extends InputMethodService {
         dbAccess.close();
     }
 
+
+
+
+    void applyTheme (){
+
+        theme = getApplicationContext().getSharedPreferences("theme", Context.MODE_PRIVATE);
+        String theme_name = theme.getString("theme_name", "");
+        Log.d("PIUKeyboard", "applyTheme: "+ theme_name);
+        Log.d("PIUKeyboard", "applyTheme: "+ this.theme_name);
+
+        if (this.theme_name.equals(theme_name)){
+            return;
+        }
+        this.theme_name = theme_name;
+        String theme_bg_color = theme.getString("theme_bg_color", "");
+        int theme_font_color = getResources().getColor(R.color.default_font_color);
+
+
+        ViewGroup keyboardView = (ViewGroup)getLayoutInflater().inflate(R.layout.keyboard_layout, null);
+        ViewGroup charSets = keyboardView.findViewById(R.id.char_sets);
+
+        final ViewGroup key123 = keyboardView.findViewById(R.id.key123);
+        final ViewGroup keykorkhor = keyboardView.findViewById(R.id.keyKorKhor);
+        final View first_row = keyboardView.findViewById(R.id.first_row);
+        final View second_row = keyboardView.findViewById(R.id.second_row);
+        final View third_row = keyboardView.findViewById(R.id.third_row);
+        final View fourth_row = keyboardView.findViewById(R.id.fourth_row);
+        final View last_row = keyboardView.findViewById(R.id.last_row);
+        final View suggestions_row = keyboardView.findViewById(R.id.suggestions_row);
+        ImageView deleteVector = keyboardView.findViewById(R.id.d12);
+        ImageView settingVector = keyboardView.findViewById(R.id.e2);
+        ImageView emojiVector = keyboardView.findViewById(R.id.e3);
+        ImageView returnVector = keyboardView.findViewById(R.id.e5);
+        TextView spaceText = keyboardView.findViewById(R.id.e4);
+        TextView key123Text = (TextView) key123.getChildAt(0);
+        TextView keykorkhorText = (TextView) keykorkhor.getChildAt(0);
+        View  keyReturn = keyboardView.findViewById(R.id.returnKey);
+        View keyBackspace = keyboardView.findViewById(R.id.backspace);
+        ViewGroup  keyEmoji = keyboardView.findViewById(R.id.emoji);
+        ViewGroup setting = keyboardView.findViewById(R.id.setting);
+        ViewGroup keySpace = keyboardView.findViewById(R.id.keySpace);
+
+
+        ArrayList<View> allView = (ArrayList<View>) getAllChildren(charSets);
+
+        //store suggestion textView
+        final ArrayList<TextView> sugTextView = new ArrayList<>();
+
+        //store suggestion key
+        final ArrayList<View> suggestionKey = new ArrayList<>();
+
+        //get view from suggestion row
+        final ArrayList<View> suggestionsView = (ArrayList<View>) getAllChildren(suggestionRow);
+
+        //get only TextView of the suggestion row
+        for (int i = 0; i < suggestionsView.size(); i++)
+        {
+            if (suggestionsView.get(i) instanceof TextView)
+                sugTextView.add((TextView)suggestionsView.get(i));
+
+        }
+
+        for (int i = 0; i<suggestionsView.size(); i++){
+            suggestionKey.add((View) suggestionsView.get(i).getParent());
+        }
+
+
+        final ArrayList<TextView> allTextView = new ArrayList<>(); // store only the TextView (the characters)
+        final ArrayList<View> allFrameLayout = new ArrayList<>(); //store key of the keyboard
+
+
+
+        for (int i = 0; i < allView.size(); i++) //get TextView from the layout {total 85 need only 82}
+        {
+            if (allView.get(i) instanceof TextView)
+            allTextView.add((TextView)allView.get(i));
+
+        }
+
+        for (int i = 0; i < allView.size(); i++) //get key from the layout
+        {
+            if (i % 2 != 0)
+            {
+                allFrameLayout.add((View) allView.get(i).getParent());
+            }
+        }
+
+
+
+
+
+        switch (theme.getString("theme_font_color", "")){
+            case "default":
+                theme_font_color = getResources().getColor(R.color.default_font_color);
+                break;
+            case "white_theme_font_color":
+                theme_font_color = getResources().getColor(R.color.white_theme_font_color);
+                break;
+        }
+
+        for (int i = 0; i < 91; i++){
+            allTextView.get(i).setTextColor(theme_font_color);
+        }
+
+
+        int themeDrawable = R.drawable.rounded_shape;
+
+        switch (theme_name){
+            case "purple":
+                themeDrawable = R.drawable.purple_rounded_shape;
+                break;
+            case "red":
+                themeDrawable = R.drawable.red_rounded_shape;
+                break;
+            case "blue":
+                themeDrawable = R.drawable.blue_rounded_shape;
+                Log.d("PIUKeyboard", "case executed: "+ theme_name);
+
+                break;
+            case "orange":
+                themeDrawable = R.drawable.orange_rounded_shape;
+                break;
+            case "black":
+                themeDrawable = R.drawable.rounded_shape;
+                break;
+            case "white":
+                themeDrawable = R.drawable.white_rounded_shape;
+                emojiVector.setColorFilter(ContextCompat.getColor(this, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
+                settingVector.setColorFilter(ContextCompat.getColor(this, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
+                returnVector.setColorFilter(ContextCompat.getColor(this, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
+                deleteVector.setColorFilter(ContextCompat.getColor(this, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
+                key123Text.setTextColor(Color.BLACK);
+                keykorkhorText.setTextColor(Color.BLACK);
+                break;
+        }
+
+        for(int i = 0; i < 3; i++){
+//                Log.d("PIUKeyboard", "theme bg color: "+ Integer.parseInt(theme_bg_color));
+            suggestionKey.get(i).setBackgroundColor(Color.parseColor(theme.getString("theme_bg_color", "")));
+            suggestionKey.get(i).setBackground(ContextCompat.getDrawable(this, themeDrawable));
+
+        }
+
+        for (int i = 0; i < allFrameLayout.size(); i++){
+            Log.d("PIUKeyboard", "allfr: "+ allFrameLayout.size());
+            allFrameLayout.get(i).setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        }
+
+        keyBackspace.setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        key123.setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        setting.getChildAt(0).setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        keySpace.getChildAt(0).setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        keyEmoji.getChildAt(0).setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        keykorkhor.setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        keyReturn.setBackground(ContextCompat.getDrawable(this, themeDrawable));
+        first_row.setBackgroundColor(Color.parseColor(theme.getString("theme_bg_color", "")));
+        second_row.setBackgroundColor(Color.parseColor(theme.getString("theme_bg_color", "")));
+        third_row.setBackgroundColor(Color.parseColor(theme.getString("theme_bg_color", "")));
+        fourth_row.setBackgroundColor(Color.parseColor(theme.getString("theme_bg_color", "")));
+        last_row.setBackgroundColor(Color.parseColor(theme.getString("theme_bg_color", "")));
+        suggestions_row.setBackgroundColor(Color.parseColor(theme.getString("theme_bg_color", "")));
+        Log.d("PIUKeyboard", "finished apply theme: ");
+
+        spaceText.setText("space");
+        spaceText.setVisibility(View.INVISIBLE);
+        spaceText.setVisibility(View.VISIBLE);
+
+
+
+    }
+
+
+    @Override
+    public void onWindowShown() {
+        Log.d("PIUKeyboard", "windowShown started");
+        super.onWindowShown();
+        applyTheme();
+
+    }
+
     @Override
     public View onCreateInputView() {
 
         inputString = new StringBuffer();
+
 
         Log.d("PIUKeyboard", "Keyboard started");
         Log.d("PIUKeyboard", "InputString length: "+ inputString.length());
@@ -244,13 +436,13 @@ public class KhmerKeyboard extends InputMethodService {
         ViewGroup charSets = keyboardView.findViewById(R.id.char_sets);
         suggestionRow = keyboardView.findViewById(R.id.suggestions);
         final ViewGroup emojiHolder = keyboardView.findViewById(R.id.emojiHolder);
-        View keySpace = keyboardView.findViewById(R.id.keySpace);
+        ViewGroup keySpace = keyboardView.findViewById(R.id.keySpace);
         View keyBackspace = keyboardView.findViewById(R.id.backspace);
         View  keyReturn = keyboardView.findViewById(R.id.returnKey);
-        View  keyEmoji = keyboardView.findViewById(R.id.emoji);
-        final View key123 = keyboardView.findViewById(R.id.key123);
-        final View keykorkhor = keyboardView.findViewById(R.id.keyKorKhor);
-        final View setting = keyboardView.findViewById(R.id.setting);
+        ViewGroup  keyEmoji = keyboardView.findViewById(R.id.emoji);
+        final ViewGroup key123 = keyboardView.findViewById(R.id.key123);
+        final ViewGroup keykorkhor = keyboardView.findViewById(R.id.keyKorKhor);
+        final ViewGroup setting = keyboardView.findViewById(R.id.setting);
         final View emoFlag = keyboardView.findViewById(R.id.emo_flag);
         final View emoActivities = keyboardView.findViewById(R.id.emo_activities);
         final View emoPeople = keyboardView.findViewById(R.id.emo_people);
@@ -261,6 +453,7 @@ public class KhmerKeyboard extends InputMethodService {
         final View emoNature = keyboardView.findViewById(R.id.emo_nature);
         final View emoTransport = keyboardView.findViewById(R.id.emo_transport);
         final ViewGroup emo_holder = keyboardView.findViewById(R.id.emojiHolder);
+
 
 
         suggestionRow.setVisibility(View.INVISIBLE);
@@ -302,8 +495,12 @@ public class KhmerKeyboard extends InputMethodService {
             suggestionKey.add((View) suggestionsView.get(i).getParent());
         }
 
+
+
         final ArrayList<TextView> allTextView = new ArrayList<>(); // store only the TextView (the characters)
         final ArrayList<View> allFrameLayout = new ArrayList<>(); //store key of the keyboard
+
+
 
         for (int i = 0; i < allView.size(); i++) //get TextView from the layout {total 85 need only 82}
         {
@@ -320,11 +517,15 @@ public class KhmerKeyboard extends InputMethodService {
             }
         }
 
+//        applyTheme();
+
+
 
         //default layout
         for (int i = 0; i<92; i++)
         {
             allTextView.get(i).setText(charAll[i]);
+
         }
 
         int k = 1;
@@ -450,11 +651,6 @@ public class KhmerKeyboard extends InputMethodService {
 
 
 
-
-
-
-
-
         keyEmoji.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -497,6 +693,7 @@ public class KhmerKeyboard extends InputMethodService {
                 emojiHolder.setVisibility(View.GONE);
                 key123.setVisibility(View.VISIBLE);
                 keykorkhor.setVisibility(View.GONE);
+
 
             }
         });
@@ -596,7 +793,7 @@ public class KhmerKeyboard extends InputMethodService {
 
     private class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
-
+        int emoji_key = R.layout.emoji_key;
 
         private String[] mDataset;
 
@@ -620,9 +817,10 @@ public class KhmerKeyboard extends InputMethodService {
         // Create new views (invoked by the layout manager)
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
             // create a new view
             View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.emoji_key, parent, false);
+                    .inflate(emoji_key, parent, false);
 
             MyViewHolder vh = new MyViewHolder(v);
             return vh;

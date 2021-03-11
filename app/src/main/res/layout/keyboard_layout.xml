@@ -10,14 +10,15 @@
     <LinearLayout
         android:id="@+id/big_board"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
-        android:background="#63686e"
+        android:background="#313131"
         android:layout_gravity="bottom"
         >
 
         //suggestion row
         <LinearLayout
+            android:id="@+id/suggestions_row"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -65,7 +66,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </FrameLayout>
@@ -85,7 +86,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </FrameLayout>
@@ -106,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -270,7 +271,6 @@
 
         //container of all keys row
         <LinearLayout
-
             android:id="@+id/char_sets"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -280,6 +280,7 @@
 
             //first row
             <LinearLayout
+                android:id="@+id/first_row"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -301,13 +302,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -326,13 +327,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -351,13 +352,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -376,13 +377,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -401,13 +402,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -426,13 +427,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -451,13 +452,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -476,13 +477,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -501,13 +502,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -526,13 +527,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -551,13 +552,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
                     </FrameLayout>
                 </LinearLayout>
@@ -575,19 +576,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
                     </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
             //second row
             <LinearLayout
+                android:id="@+id/second_row"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -611,13 +613,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -637,13 +639,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -662,13 +664,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -687,39 +689,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
-                            android:textSize="15sp"/>
-
-                    </FrameLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingRight="5dp">
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rounded_shape">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:textColor="#fff"
-                            android:textSize="10sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -739,13 +715,39 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"/>
+
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="5dp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_shape">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:textColor="#ffffff"
+                            android:textSize="10sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -764,13 +766,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -789,13 +791,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -814,13 +816,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -839,13 +841,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -864,13 +866,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -889,13 +891,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -905,6 +907,7 @@
             </LinearLayout>
             //third row
             <LinearLayout
+                android:id="@+id/third_row"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -928,13 +931,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -954,13 +957,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -979,13 +982,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1004,39 +1007,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
-                            android:textSize="15sp"/>
-
-                    </FrameLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingRight="5dp">
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rounded_shape">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:textColor="#fff"
-                            android:textSize="10sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1056,13 +1033,39 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"/>
+
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="5dp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_shape">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:textColor="#ffffff"
+                            android:textSize="10sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1081,13 +1084,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1106,13 +1109,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1131,13 +1134,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1156,13 +1159,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1181,13 +1184,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1206,13 +1209,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1222,6 +1225,7 @@
             </LinearLayout>
             //fourth row
             <LinearLayout
+                android:id="@+id/fourth_row"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -1244,13 +1248,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1269,13 +1273,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1294,39 +1298,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
-                            android:textSize="15sp"/>
-
-                    </FrameLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingRight="5dp">
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rounded_shape">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:textColor="#fff"
-                            android:textSize="10sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1346,13 +1324,39 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"/>
+
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="5dp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_shape">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:textColor="#ffffff"
+                            android:textSize="10sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1371,13 +1375,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1396,41 +1400,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
-                            android:textSize="15sp"/>
-
-                    </FrameLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingRight="5dp">
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rounded_shape">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:text="​៊"
-                            android:textColor="#fff"
-                            android:textSize="10sp"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:textColor="#fff"
-                            android:text=" ៊"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1449,13 +1425,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="15sp"/>
 
                     </FrameLayout>
@@ -1474,14 +1450,41 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
-                            android:textColor="#fff"
+                            android:textColor="#ffffff"
                             android:textSize="10sp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="#fff"
-                            android:textSize="25sp"/>
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"/>
+
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="5dp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_shape">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:textColor="#ffffff"
+                            android:textSize="10sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="1dp"
+                            android:layout_gravity="center"
+                            android:text="​​​ដ៊"
+                            android:textColor="#ffffff"
+                            android:textSize="15sp"/>
 
                     </FrameLayout>
                 </LinearLayout>
@@ -1514,21 +1517,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-
                 android:scrollbars="vertical" />
 
 
         </LinearLayout>
 
+
         //last row
-
-
         <LinearLayout
+            android:id="@+id/last_row"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="#313131"
-            android:paddingTop="2.5dp"
+            android:paddingTop="1dp"
             android:paddingBottom="5dp"
             android:orientation="horizontal">
             <LinearLayout
@@ -1550,7 +1552,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123"
-                        android:textColor="#fff"
+                        android:textColor="#ffffff"
                         android:layout_gravity="center"/>
                 </FrameLayout>
 
@@ -1566,7 +1568,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="កខគ"
-                        android:textColor="#fff"
+                        android:textColor="#ffffff"
                         android:layout_gravity="center"/>
                 </FrameLayout>
             </LinearLayout>
@@ -1624,7 +1626,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="ដកឃ្លា"
-                        android:textColor="#fff"
+                        android:textColor="#ffffff"
 
                         />
                 </FrameLayout>
@@ -1633,7 +1635,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="3.1"
                 android:paddingRight="5dp">
                 <FrameLayout
                     android:id="@id/returnKey"

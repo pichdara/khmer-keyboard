@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class AboutUs extends Activity implements View.OnClickListener{
-    TextView email, phone, facebook, website, location;
+    View email, phone, facebook, website, location;
     ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
