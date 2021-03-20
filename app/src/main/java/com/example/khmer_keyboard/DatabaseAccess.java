@@ -55,10 +55,10 @@ public class DatabaseAccess {
     public List<String> getSuggestion(StringBuffer word, boolean isAutoComplete){
         String query;
         if (isAutoComplete){
-            query = "SELECT Word FROM Table1 WHERE Word LIKE  '"+word+'%'+"' ORDER BY Priority DESC LIMIT 3";
+            query = "SELECT Word FROM unigram WHERE Word LIKE  '"+word+'%'+"' ORDER BY count DESC LIMIT 3";
         }
         else {
-            query = "SELECT Word2 FROM NextWord WHERE Word1 ='"+word+"' ORDER BY Priority DESC LIMIT 3";
+            query = "SELECT Word2 FROM bigram WHERE Word1 ='"+word+"' ORDER BY count DESC LIMIT 3";
         }
         c=db.rawQuery(query , new String[]{});
         List<String> data = new ArrayList<>();
@@ -71,16 +71,16 @@ public class DatabaseAccess {
     }
 
     void updatePrio(String word){
-        c=db.rawQuery("SELECT Priority FROM Table1 WHERE Word ='"+word+"' LIMIT 1" , new String[]{});
+        c=db.rawQuery("SELECT count FROM unigram WHERE Word ='"+word+"' LIMIT 1" , new String[]{});
         int oldPrio = 0;
         while (c.moveToNext()){
             oldPrio = c.getInt(0);
         }
         oldPrio++;
         ContentValues cv = new ContentValues();
-        cv.put("Priority", oldPrio);
+        cv.put("count", oldPrio);
 
-        db.update("Table1",cv,"Word = '"+word+"'", new String[]{});
+        db.update("unigram",cv,"Word = '"+word+"'", new String[]{});
     }
 
 

@@ -7,6 +7,39 @@
     android:background="#fff"
     tools:context=".Theme">
 
+    <RadioButton
+        android:id="@+id/radioButtonRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/red_board"
+        app:layout_constraintStart_toStartOf="@+id/red_board"
+        app:layout_constraintTop_toBottomOf="@+id/blue_board"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radioButtonOrange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/orange"
+        app:layout_constraintStart_toStartOf="@+id/orange"
+        app:layout_constraintTop_toBottomOf="@+id/purple"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radioButtonPurple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/purple"
+        app:layout_constraintStart_toStartOf="@+id/purple"
+        app:layout_constraintTop_toBottomOf="@+id/custom_theme"
+        app:layout_constraintVertical_bias="1.0" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -42,22 +75,22 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <ImageView
         android:id="@+id/dark_board"
         android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/dark_board"
         app:layout_constraintEnd_toStartOf="@+id/white_board"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/default_theme" />
 
-
     <ImageView
         android:id="@+id/white_board"
         android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.608"
@@ -100,54 +133,89 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/default_theme"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <ImageView
         android:id="@+id/blue_board"
         android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/blue_board"
-        app:layout_constraintEnd_toStartOf="@+id/purple"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dark_board"
         app:layout_constraintTop_toBottomOf="@+id/custom_theme" />
 
     <ImageView
         android:id="@+id/purple"
         android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/purple_board"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/custom_theme"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/blue_board"
+        app:layout_constraintTop_toBottomOf="@+id/custom_theme" />
 
     <ImageView
         android:id="@+id/red_board"
-        android:layout_width="180dp"
+        android:layout_width="175dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/red_board"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/orange"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/custom_theme"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintStart_toStartOf="@+id/blue_board"
+        app:layout_constraintTop_toBottomOf="@+id/blue_board"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/orange"
         android:layout_width="180dp"
         android:layout_height="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/orange"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/red_board"
+        app:layout_constraintTop_toBottomOf="@+id/purple"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <RadioButton
+        android:id="@+id/radioButtonBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/dark_board"
+        app:layout_constraintStart_toStartOf="@+id/dark_board"
+        app:layout_constraintTop_toBottomOf="@+id/default_theme"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radioButtonWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/white_board"
+        app:layout_constraintStart_toStartOf="@+id/white_board"
+        app:layout_constraintTop_toBottomOf="@+id/default_theme"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radioButtonBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toTopOf="@+id/blue_board"
+        app:layout_constraintStart_toStartOf="@+id/blue_board"
         app:layout_constraintTop_toBottomOf="@+id/custom_theme"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintVertical_bias="1.0" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
