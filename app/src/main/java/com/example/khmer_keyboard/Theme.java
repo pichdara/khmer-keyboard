@@ -1,30 +1,15 @@
 package com.example.khmer_keyboard;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Theme extends Activity implements View.OnClickListener {
     ImageView back,white, defaultBoard, blue, purple, orange, red;
@@ -169,7 +154,6 @@ public class Theme extends Activity implements View.OnClickListener {
         setCheckedRadio(theme.getString("theme_name", ""));
 
 
-
         red.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -276,10 +260,6 @@ public class Theme extends Activity implements View.OnClickListener {
 
             }
         });
-
-
-
-
 
 
     }
