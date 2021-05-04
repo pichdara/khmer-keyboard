@@ -353,10 +353,19 @@ public class KhmerKeyboard extends InputMethodService {
 
 
         int themeDrawable = R.drawable.rounded_shape;
+        // change static icon to white after changed to black when white theme selected
+        emojiVector.setColorFilter(ContextCompat.getColor(this, R.color.default_font_color), android.graphics.PorterDuff.Mode.SRC_IN);
+        settingVector.setColorFilter(ContextCompat.getColor(this, R.color.default_font_color), android.graphics.PorterDuff.Mode.SRC_IN);
+        returnVector.setColorFilter(ContextCompat.getColor(this, R.color.default_font_color), android.graphics.PorterDuff.Mode.SRC_IN);
+        deleteVector.setColorFilter(ContextCompat.getColor(this, R.color.default_font_color), android.graphics.PorterDuff.Mode.SRC_IN);
+        key123Text.setTextColor(Color.WHITE);
+        spaceText.setTextColor(Color.WHITE);
+        keykorkhorText.setTextColor(Color.WHITE);
 
         switch (theme_name){
             case "purple":
                 themeDrawable = R.drawable.purple_rounded_shape;
+
                 break;
             case "red":
                 themeDrawable = R.drawable.red_rounded_shape;
@@ -721,7 +730,7 @@ public class KhmerKeyboard extends InputMethodService {
             }
         });
 
-
+        setRoundedBackground(emo_holder, emoSmiley);
         emoFlag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -842,7 +851,7 @@ public class KhmerKeyboard extends InputMethodService {
             // - replace the contents of the view with that element
 
 
-
+            holder.itemView.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.rounded_shape));
             holder.textView.setText(mDataset[position]);
 
         }
