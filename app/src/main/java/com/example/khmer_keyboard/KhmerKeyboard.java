@@ -596,7 +596,6 @@ public class KhmerKeyboard extends InputMethodService {
                 }
                 
                 isAutoComplete = true;
-//                ic.deleteSurroundingText(1,0);
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
                 ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL));
                 curPos = ic.getTextBeforeCursor(300,0).length();
@@ -618,19 +617,6 @@ public class KhmerKeyboard extends InputMethodService {
         keySpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                CharSequence textBeforeCursor = ic.getTextBeforeCursor(1, 0);
-//                Log.d("PIUKeyboard", "text before cursor: "+textBeforeCursor);
-//                if (textBeforeCursor.toString().equals(" ")){
-////                    Log.d("PIUKeyboard", "input String value:"+inputString);
-//
-//                    inputString = new StringBuffer();
-//                    Log.d("PIUKeyboard", "input String has been renewed");
-//                }
-//                else {
-//                    ic.commitText(" ", 1);
-//                    inputString.append(" ");
-//                }
-//                Log.d("PIUKeyboard", "input String value:"+inputString);
                 ic.commitText(" ", 1);
                 inputString = new StringBuffer();
                 setSuggestionText(inputString, sugTextView);

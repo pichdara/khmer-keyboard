@@ -223,7 +223,7 @@
                         android:id="@+id/emo_object"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.2"
+                        android:layout_weight="1"
 
                         >
 
@@ -1219,7 +1219,7 @@
                             android:textSize="15sp"/>
 
                     </FrameLayout>
-                </LinearLayout>l
+                </LinearLayout>
 
 
             </LinearLayout>
