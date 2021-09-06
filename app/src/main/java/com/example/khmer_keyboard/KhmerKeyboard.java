@@ -2,11 +2,8 @@
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources.Theme;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.inputmethodservice.InputMethodService;
-import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -16,13 +13,10 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -364,23 +358,23 @@ public class KhmerKeyboard extends InputMethodService {
 
         switch (theme_name){
             case "purple":
-                themeDrawable = R.drawable.purple_rounded_shape;
+                themeDrawable = R.drawable.purple;
 
                 break;
             case "red":
-                themeDrawable = R.drawable.red_rounded_shape;
+                themeDrawable = R.drawable.red;
                 break;
             case "blue":
-                themeDrawable = R.drawable.blue_rounded_shape;
+                themeDrawable = R.drawable.blue;
                 break;
             case "orange":
-                themeDrawable = R.drawable.orange_rounded_shape;
+                themeDrawable = R.drawable.yellow;
                 break;
             case "black":
                 themeDrawable = R.drawable.rounded_shape;
                 break;
             case "white":
-                themeDrawable = R.drawable.white_rounded_shape;
+                themeDrawable = R.drawable.white1;
                 emojiVector.setColorFilter(ContextCompat.getColor(this, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
                 settingVector.setColorFilter(ContextCompat.getColor(this, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
                 returnVector.setColorFilter(ContextCompat.getColor(this, R.color.black), android.graphics.PorterDuff.Mode.SRC_IN);
@@ -837,7 +831,7 @@ public class KhmerKeyboard extends InputMethodService {
             // - replace the contents of the view with that element
 
 
-            holder.itemView.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.rounded_shape));
+//            holder.itemView.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.rounded_shape));
             holder.textView.setText(mDataset[position]);
 
         }

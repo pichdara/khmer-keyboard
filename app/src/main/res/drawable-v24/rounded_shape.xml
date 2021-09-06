@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#414141"/>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
-    <padding android:left="2dp"
-        android:top="2dp"
-        android:right="2dp"
-        android:bottom="2dp"/>
-
-    <corners android:radius="5dp" />
-</shape>
+<item android:state_pressed="true"
+    android:drawable="@drawable/rounded_shape_pressed" /> <!-- pressed -->
+<item android:drawable="@drawable/rounded_shape_default"/> <!-- idle state -->
+</selector>
