@@ -3,11 +3,13 @@
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.inputmethodservice.InputMethodService;
 import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputConnection;
@@ -25,6 +27,7 @@ import java.util.List;
 
 public class KhmerKeyboard extends InputMethodService {
 
+    ViewGroup lytPopKey;
     StringBuffer inputString;
     ViewGroup suggestionRow;
     boolean isAutoComplete = true;
@@ -38,6 +41,8 @@ public class KhmerKeyboard extends InputMethodService {
     ViewGroup keyboardView;
     BackspaceLongClickTimer backspaceLongClickTimer = new BackspaceLongClickTimer();
     Handler handler = new Handler();
+    private boolean isSpeakButtonLongPressed = false;
+    DatabaseAccess dbAccess;
 
 
 
@@ -194,14 +199,22 @@ public class KhmerKeyboard extends InputMethodService {
 
     }
 
-
+    //query for the word definition
+    private String wordDefQuery(String word)
+    {
+//        DatabaseAccess dbAccess = DatabaseAccess.getInstance(getApplicationContext());
+        dbAccess.open();
+        String wordDef = dbAccess.getDefinition(word);
+        dbAccess.close();
+        return wordDef;
+    }
 
 
     //query top 3 suggestion word from database
     private List<String> query (StringBuffer word){
 
         Log.d("PIUKeyboard", "query for:"+word);
-        DatabaseAccess dbAccess = DatabaseAccess.getInstance(getApplicationContext());
+//        DatabaseAccess dbAccess = DatabaseAccess.getInstance(getApplicationContext());
         dbAccess.open();
         List<String> suggestion = dbAccess.getSuggestion(word, isAutoComplete);
         dbAccess.close();
@@ -237,12 +250,41 @@ public class KhmerKeyboard extends InputMethodService {
 
     //update priority
     void updatePriority(String word){
-        DatabaseAccess dbAccess = DatabaseAccess.getInstance(getApplicationContext());
         dbAccess.open();
         dbAccess.updatePrio(word);
         dbAccess.close();
     }
 
+
+    private void showPopKey(String key, View anchor){
+        // Popup position
+        Rect anchorBound = new Rect();
+        anchor.getDrawingRect(anchorBound);
+        keyboardView.offsetDescendantRectToMyCoords(anchor, anchorBound);
+        int diffWidth = lytPopKey.getWidth() - anchor.getWidth();
+        int popX = anchorBound.left - (diffWidth / 2);
+        if(popX < 0) {
+            popX = anchorBound.left;
+        } else if(anchorBound.left + lytPopKey.getWidth() > keyboardView.getWidth()){
+            popX = anchorBound.left - diffWidth;
+        }
+        int popY = anchorBound.top - anchor.getHeight();
+        lytPopKey.setX(popX);
+        lytPopKey.setY(popY);
+
+        // Popup text
+        TextView txtKey = (TextView) lytPopKey.getChildAt(0);
+        txtKey.setText(key);
+
+        // Show and hide popup
+        lytPopKey.setVisibility(View.VISIBLE);
+        lytPopKey.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                lytPopKey.setVisibility(View.GONE);
+            }
+        }, 125);
+    }
 
 
 
@@ -251,6 +293,16 @@ public class KhmerKeyboard extends InputMethodService {
         ic = getCurrentInputConnection();
 
         theme = getApplicationContext().getSharedPreferences("theme", Context.MODE_PRIVATE);
+
+        if(theme.getString("theme_name", "").equals("")){
+            SharedPreferences.Editor edit = theme.edit();
+            edit.putString("theme_name", "default");
+            edit.putString("theme_bg_color","#313131" );
+            edit.putString("theme_font_color","#default" );
+            Log.d("PIUKeyboard", "onCreate: main activity activated and executed shered pref");
+            edit.commit();
+        }
+
         String theme_name = theme.getString("theme_name", "");
 
 
@@ -285,6 +337,7 @@ public class KhmerKeyboard extends InputMethodService {
         ViewGroup setting = keyboardView.findViewById(R.id.setting);
         ViewGroup keySpace = keyboardView.findViewById(R.id.keySpace);
         View myRecyclerView = keyboardView.findViewById(R.id.myRecylerView);
+        lytPopKey = keyboardView.findViewById(R.id.lyt_pop_key);
 
 
         ArrayList<View> allView = (ArrayList<View>) getAllChildren(charSets);
@@ -359,19 +412,23 @@ public class KhmerKeyboard extends InputMethodService {
         switch (theme_name){
             case "purple":
                 themeDrawable = R.drawable.purple;
-
+                lytPopKey.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_shape));
                 break;
             case "red":
                 themeDrawable = R.drawable.red;
+                lytPopKey.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_shape));
                 break;
             case "blue":
                 themeDrawable = R.drawable.blue;
+                lytPopKey.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_shape));
                 break;
             case "orange":
                 themeDrawable = R.drawable.yellow;
+                lytPopKey.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_shape));
                 break;
             case "black":
                 themeDrawable = R.drawable.rounded_shape;
+                lytPopKey.setBackground(ContextCompat.getDrawable(this, R.drawable.blue));
                 break;
             case "white":
                 themeDrawable = R.drawable.white1;
@@ -382,6 +439,7 @@ public class KhmerKeyboard extends InputMethodService {
                 key123Text.setTextColor(Color.BLACK);
                 spaceText.setTextColor(Color.BLACK);
                 keykorkhorText.setTextColor(Color.BLACK);
+                lytPopKey.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_shape));
                 break;
         }
 
@@ -420,6 +478,7 @@ public class KhmerKeyboard extends InputMethodService {
 
         super.onWindowShown();
         applyTheme();
+        dbAccess = DatabaseAccess.getInstance(getApplicationContext());
 
     }
 
@@ -428,6 +487,7 @@ public class KhmerKeyboard extends InputMethodService {
 
         inputString = new StringBuffer();
         ic = getCurrentInputConnection();
+
 
 
         keyboardView = (ViewGroup)getLayoutInflater().inflate(R.layout.keyboard_layout, null);
@@ -451,6 +511,10 @@ public class KhmerKeyboard extends InputMethodService {
         final View emoNature = keyboardView.findViewById(R.id.emo_nature);
         final View emoTransport = keyboardView.findViewById(R.id.emo_transport);
         final ViewGroup emo_holder = keyboardView.findViewById(R.id.emojiHolder);
+        final ViewGroup wordDef = keyboardView.findViewById(R.id.wordDef);
+        lytPopKey = keyboardView.findViewById(R.id.lyt_pop_key);
+        final TextView wordDefText = (TextView) wordDef.getChildAt(0);
+
 
 
 
@@ -500,7 +564,6 @@ public class KhmerKeyboard extends InputMethodService {
         final ArrayList<View> allFrameLayout = new ArrayList<>(); //store key of the keyboard
 
 
-
         for (int i = 0; i < allView.size(); i++) //get TextView from the layout {total 85 need only 82}
         {
             if (allView.get(i) instanceof TextView)
@@ -530,10 +593,14 @@ public class KhmerKeyboard extends InputMethodService {
         {
 
             final int j = k;
+            final View key = allFrameLayout.get(i);
+
             allFrameLayout.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) { //on click listener
                     isAutoComplete = true;
+                    final String s = allTextView.get(j).getText().toString();
+                    showPopKey(s, key);
                     ic.commitText(allTextView.get(j).getText(), 1);
                     inputString.append(allTextView.get(j).getText());
                     setSuggestionText(inputString, sugTextView);
@@ -543,8 +610,10 @@ public class KhmerKeyboard extends InputMethodService {
             });
             k += 2;
             allFrameLayout.get(i).setOnTouchListener(new OnSwipeTouchListener(){
-                public boolean onSwipeTop() { // swipeUp listener
+                public boolean onSwipeBottom() { // swipeUp listener
                     isAutoComplete = true;
+                    final String s = allTextView.get(j-1).getText().toString();
+                    showPopKey(s, key);
                     ic.commitText(allTextView.get(j-1).getText(), 1);
                     inputString.append(allTextView.get(j-1).getText());
                     Log.d("PIUKeyboard", "ontouchlistener: "+ inputString);
@@ -657,6 +726,39 @@ public class KhmerKeyboard extends InputMethodService {
                     updatePriority((String) sugTextView.get(b).getText());
                 }
             });
+            suggestionKey.get(i).setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Log.d("PIUKeyboard", "longClick pressed");
+                    wordDef.setVisibility(View.VISIBLE);
+                    String wordDef = wordDefQuery((String) sugTextView.get(b).getText());
+                    Log.d("PIUKeyboard", "wordDef"+ wordDef);
+//                    wordDefText.setText(sugTextView.get(b).getText());
+                    wordDefText.setText(wordDef);
+
+                    isSpeakButtonLongPressed = true;
+
+                    return true;
+                }
+
+            });
+            suggestionKey.get(i).setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+
+                        if (isSpeakButtonLongPressed) {
+                            // Do something when the button is released.
+                            wordDef.setVisibility(View.GONE);
+                            isSpeakButtonLongPressed = false;
+                        }
+                    }
+                    return false;
+                }
+            });
+
+//            wordDef.setVisibility(View.INVISIBLE);
+//            Log.d("PIUKeyboard", "longClick unpressed");
             l++;
         }
 
@@ -863,6 +965,8 @@ public class KhmerKeyboard extends InputMethodService {
             }
         }
     }
+
+
 
 
     private class BackspaceLongClickTimer implements Runnable {

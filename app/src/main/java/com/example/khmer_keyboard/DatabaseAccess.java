@@ -70,6 +70,15 @@ public class DatabaseAccess {
 
     }
 
+    public String getDefinition(String word){
+        c=db.rawQuery("SELECT Meaning FROM unigram WHERE Word ='"+word+"' LIMIT 1" , new String[]{});
+        String data ="";
+        while (c.moveToNext()){
+            data = c.getString(0);
+        }
+        return data;
+    }
+
     void updatePrio(String word){
         c=db.rawQuery("SELECT count FROM unigram WHERE Word ='"+word+"' LIMIT 1" , new String[]{});
         int oldPrio = 0;
